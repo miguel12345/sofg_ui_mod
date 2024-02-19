@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule.dll">
+        <HintPath>D:\Personal\Steam\steamapps\common\Shadows of Forbidden Gods\ShadowsOfForbiddenGods_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    
+    <Reference Include="0Harmony.dll">
+        <HintPath>0Harmony.dll</HintPath>
+    </Reference>
+</ItemGroup>
+
+<Target Name="CopyFilesAfterBuild" AfterTargets="Build">
+    <Exec Command="echo Copying files to $(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(ProjectDir)mod_desc.json" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(ProjectDir)0Harmony.dll" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(ProjectDir)eye.png" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+    <Copy SourceFiles="$(ProjectDir)notes.png" DestinationFolder="$(SOFG_MOD_INSTALL_DIR)" />
+</Target>
+
+</Project>
